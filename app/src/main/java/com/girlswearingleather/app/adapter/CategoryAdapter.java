@@ -75,7 +75,7 @@ public class CategoryAdapter extends BaseAdapter {
 
             if(v == null)
             {
-                v = inflater.inflate(R.layout.section_item_layout, viewGroup, false);
+                v = inflater.inflate(R.layout.category_item_layout, viewGroup, false);
                 v.setTag(R.id.picture, v.findViewById(R.id.picture));
                 v.setTag(R.id.text, v.findViewById(R.id.text));
             }

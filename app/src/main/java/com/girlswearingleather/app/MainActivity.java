@@ -13,13 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
+import com.girlswearingleather.app.adapter.CategoryStaggeredAdapter;
 import com.girlswearingleather.app.fragment.CardListFragment;
 import com.girlswearingleather.app.fragment.CategoriesFragment;
+import com.girlswearingleather.app.fragment.CategoriesStaggeredFragment;
 import com.girlswearingleather.app.fragment.ConfigurationFragment;
 import com.girlswearingleather.app.fragment.DashboardFragment;
 import com.girlswearingleather.app.fragment.FavouritesFragment;
 import com.girlswearingleather.app.fragment.NavigationDrawerFragment;
 import com.girlswearingleather.app.fragment.SearchFragment;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class MainActivity extends AppCompatActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -38,6 +42,9 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(config);
+
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
 
@@ -54,7 +61,10 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
                 fragmentManager.beginTransaction().replace(R.id.container, DashboardFragment.newInstance()).commit();
                 break;
             case 1:
+                /*
                 fragmentManager.beginTransaction().replace(R.id.container, CategoriesFragment.newInstance()).commit();
+                */
+                fragmentManager.beginTransaction().replace(R.id.container, CategoriesStaggeredFragment.newInstance()).commit();
                 break;
             case 2:
                 fragmentManager.beginTransaction().replace(R.id.container, FavouritesFragment.newInstance()).commit();

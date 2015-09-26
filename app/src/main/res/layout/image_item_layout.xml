@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/panel_content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_weight="0.5"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+
+    <com.etsy.android.grid.util.DynamicHeightImageView
+        android:id="@+id/small"
+        android:src="@drawable/test"
+        android:layout_width="fill_parent"
+        android:layout_height="180dip"
+        android:layout_weight="1.0"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart" />
+
+</FrameLayout>

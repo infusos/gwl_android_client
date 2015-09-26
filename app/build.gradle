@@ -43,4 +43,5 @@ dependencies {
     compile 'com.marshalchen.ultimaterecyclerview:library:0.3.17'
     compile 'com.etsy.android.grid:library:1.0.5'
     compile 'org.roboguice:roboguice:3.0.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
 }
