@@ -34,26 +34,27 @@ import butterknife.ButterKnife;
 @EActivity(R.layout.activity_category_list_layout)
 public class CategoryListActivity extends AppCompatActivity{
 
-    @ViewById
-    UltimateRecyclerView cardList;
+    @ViewById(R.id.cardList)
+    UltimateRecyclerView mCardList;
 
     private List<AlbumItem> mContent;
+    private AlbumItemAdapter mAdapter;
 
     @AfterViews
     public void init(){
         mContent = new ArrayList<AlbumItem>();
-        cardList.setHasFixedSize(true);
+        mCardList.setHasFixedSize(true);
         LinearLayoutManager mLlm = new LinearLayoutManager(this);
         mLlm.setOrientation(LinearLayoutManager.VERTICAL);
-        cardList.setLayoutManager(mLlm);
+        mCardList.setLayoutManager(mLlm);
 
         for(int i = 0; i<10; i++){
             AlbumItem album = new AlbumItem(i,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","test","test2");
             mContent.add(album);
         }
 
-        AlbumItemAdapter adapter = new AlbumItemAdapter(mContent,this);
-        cardList.setAdapter(adapter);
+        mAdapter = new AlbumItemAdapter(mContent,this);
+        mCardList.setAdapter(mAdapter);
 
     }
 
