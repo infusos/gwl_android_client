@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".activity.AlbumStaggeredActivity"/>
         <activity android:name=".activity.ImageStaggeredActivity"/>
+        <activity android:name=".activity.ImageDetailActivity"/>
     </application>
 
 </manifest>

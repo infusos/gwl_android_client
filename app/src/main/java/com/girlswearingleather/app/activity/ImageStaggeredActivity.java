@@ -1,5 +1,6 @@
 package com.girlswearingleather.app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -98,13 +99,14 @@ public class ImageStaggeredActivity extends AppCompatActivity implements /*AbsLi
      */
     private ArrayList<ImageItem> generateData() {
         ArrayList<ImageItem> listData = new ArrayList<ImageItem>();
-        /*listData.add(new ImageItem(0,"http://i62.tinypic.com/2iitkhx.jpg","",""));
-        listData.add(new ImageItem(0,"http://i61.tinypic.com/w0omeb.jpg","",""));
-        listData.add(new ImageItem(0,"http://i60.tinypic.com/w9iu1d.jpg","",""));
-        listData.add(new ImageItem(0,"http://i60.tinypic.com/iw6kh2.jpg","",""));
-        listData.add(new ImageItem(0,"http://i57.tinypic.com/ru08c8.jpg","",""));
-        listData.add(new ImageItem(0,"http://i60.tinypic.com/k12r10.jpg","",""));
-        */
+        listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
+        listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
+        listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
+        listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
+        listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
+        listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
+        listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
+        listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
         listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
         listData.add(new ImageItem(0,"http://www.leathercelebrities.com/images/uploads/15485/dionne-bromfield-attends-catwalk-%281%29__thumb.jpg","",""));
         return listData;
@@ -113,7 +115,14 @@ public class ImageStaggeredActivity extends AppCompatActivity implements /*AbsLi
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        //Toast.makeText(this, "Item Clicked: " + position, Toast.LENGTH_SHORT).show();
-        Logger.d("DASDASD");
+        Intent i = new Intent(this, ImageDetailActivity.class);
+        i.putExtra("category",position);
+        startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 }

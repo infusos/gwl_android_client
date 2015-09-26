@@ -107,16 +107,13 @@ public class AlbumStaggeredActivity extends AppCompatActivity implements /*AbsLi
     private ArrayList<AlbumItem> generateData() {
         ArrayList<AlbumItem> listData = new ArrayList<AlbumItem>();
         listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        /*
-        listData.add("http://i62.tinypic.com/2iitkhx.jpg");
-        listData.add("http://i61.tinypic.com/w0omeb.jpg");
-        listData.add("http://i60.tinypic.com/w9iu1d.jpg");
-        listData.add("http://i60.tinypic.com/iw6kh2.jpg");
-        listData.add("http://i57.tinypic.com/ru08c8.jpg");
-        listData.add("http://i60.tinypic.com/k12r10.jpg");
-        listData.add("http://i58.tinypic.com/2e3daug.jpg");
-        listData.add("http://i59.tinypic.com/2igznfr.jpg");
-        */
+        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
+        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
+        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
+        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
+        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
+        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
+        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
         return listData;
     }
 
@@ -127,4 +124,6 @@ public class AlbumStaggeredActivity extends AppCompatActivity implements /*AbsLi
         i.putExtra("category",position);
         startActivity(i);
     }
+
+
 }
