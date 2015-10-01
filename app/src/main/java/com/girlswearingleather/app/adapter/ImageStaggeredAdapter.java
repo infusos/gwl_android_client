@@ -5,12 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.etsy.android.grid.util.DynamicHeightImageView;
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.model.AlbumItem;
-import com.girlswearingleather.app.model.ImageItem;
+import com.girlswearingleather.app.model.Image;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -18,13 +16,13 @@ import java.util.ArrayList;
 /**
  * Created by Dani on 26/09/2015.
  */
-public class ImageStaggeredAdapter extends ArrayAdapter<ImageItem> {
+public class ImageStaggeredAdapter extends ArrayAdapter<Image> {
 
     private static final String TAG = "ImageStaggeredAdapter";
 
     private final LayoutInflater mLayoutInflater;
 
-    public ImageStaggeredAdapter(Context context, int textViewResourceId, ArrayList<ImageItem> objects) {
+    public ImageStaggeredAdapter(Context context, int textViewResourceId, ArrayList<Image> objects) {
         super(context, textViewResourceId, objects);
         this.mLayoutInflater = LayoutInflater.from(context);
     }

@@ -3,12 +3,12 @@ package com.girlswearingleather.app.model;
 /**
  * Created by Dani on 19/09/2015.
  */
-public class CategoryItem {
+public class Category{
 
     private String name;
     private int image;
 
-    public CategoryItem(String name, int image){
+    public Category(String name, int image){
         this.name = name;
         this.image = image;
     }

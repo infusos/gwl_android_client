@@ -3,13 +3,14 @@ package com.girlswearingleather.app.model;
 /**
  * Created by Dani on 26/09/2015.
  */
-public class ImageItem {
+public class Image{
+
     private int id;
     private String small;
     private String medium;
     private String large;
 
-    public ImageItem(int id, String small, String medium, String large){
+    public Image(int id, String small, String medium, String large){
         this.id = id;
         this.small = small;
         this.medium =medium;

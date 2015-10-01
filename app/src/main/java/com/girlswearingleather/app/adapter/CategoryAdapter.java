@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.model.CategoryItem;
+import com.girlswearingleather.app.model.Category;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class CategoryAdapter extends BaseAdapter {
 
-        private List<CategoryItem> items = new ArrayList<CategoryItem>();
+        private List<Category> items = new ArrayList<Category>();
         private LayoutInflater inflater;
         private Context mContext;
 
@@ -29,24 +29,24 @@ public class CategoryAdapter extends BaseAdapter {
             inflater = LayoutInflater.from(context);
 
             this.mContext = context;
-            items.add(new CategoryItem("Image 1", R.drawable.thumb_leather_boots));
-            items.add(new CategoryItem("Image 2", R.drawable.thumb_leather_catsuit));
-            items.add(new CategoryItem("Image 3", R.drawable.thumb_leather_coat));
-            items.add(new CategoryItem("Image 4", R.drawable.thumb_leather_cropped_pants));
-            items.add(new CategoryItem("Image 5", R.drawable.thumb_leather_dress));
-            items.add(new CategoryItem("Image 1", R.drawable.thumb_leather_jacket));
-            items.add(new CategoryItem("Image 2", R.drawable.thumb_leather_leggings));
-            items.add(new CategoryItem("Image 3", R.drawable.thumb_leather_mini_dress));
-            items.add(new CategoryItem("Image 4", R.drawable.thumb_leather_mini_skirt));
-            items.add(new CategoryItem("Image 5", R.drawable.thumb_leather_pants));
-            items.add(new CategoryItem("Image 2", R.drawable.thumb_leather_pencil_dress));
-            items.add(new CategoryItem("Image 3", R.drawable.thumb_leather_pencil_skirt));
-            items.add(new CategoryItem("Image 4", R.drawable.thumb_leather_pleated_skirt));
-            items.add(new CategoryItem("Image 5", R.drawable.thumb_leather_quilted_skirt));
-            items.add(new CategoryItem("Image 2", R.drawable.thumb_leather_shorts));
-            items.add(new CategoryItem("Image 3", R.drawable.thumb_leather_skinny_pants));
-            items.add(new CategoryItem("Image 4", R.drawable.thumb_leather_skirt));
-            items.add(new CategoryItem("Image 5", R.drawable.thumb_leather_top));
+            items.add(new Category("Image 1", R.drawable.thumb_leather_boots));
+            items.add(new Category("Image 2", R.drawable.thumb_leather_catsuit));
+            items.add(new Category("Image 3", R.drawable.thumb_leather_coat));
+            items.add(new Category("Image 4", R.drawable.thumb_leather_cropped_pants));
+            items.add(new Category("Image 5", R.drawable.thumb_leather_dress));
+            items.add(new Category("Image 1", R.drawable.thumb_leather_jacket));
+            items.add(new Category("Image 2", R.drawable.thumb_leather_leggings));
+            items.add(new Category("Image 3", R.drawable.thumb_leather_mini_dress));
+            items.add(new Category("Image 4", R.drawable.thumb_leather_mini_skirt));
+            items.add(new Category("Image 5", R.drawable.thumb_leather_pants));
+            items.add(new Category("Image 2", R.drawable.thumb_leather_pencil_dress));
+            items.add(new Category("Image 3", R.drawable.thumb_leather_pencil_skirt));
+            items.add(new Category("Image 4", R.drawable.thumb_leather_pleated_skirt));
+            items.add(new Category("Image 5", R.drawable.thumb_leather_quilted_skirt));
+            items.add(new Category("Image 2", R.drawable.thumb_leather_shorts));
+            items.add(new Category("Image 3", R.drawable.thumb_leather_skinny_pants));
+            items.add(new Category("Image 4", R.drawable.thumb_leather_skirt));
+            items.add(new Category("Image 5", R.drawable.thumb_leather_top));
         }
 
         @Override
@@ -83,7 +83,7 @@ public class CategoryAdapter extends BaseAdapter {
             picture = (ImageView)v.getTag(R.id.picture);
             name = (TextView)v.getTag(R.id.text);
 
-            CategoryItem item = (CategoryItem)getItem(i);
+            Category item = (Category)getItem(i);
 
             picture.setImageResource(R.drawable.thumb_leather_catsuit);
             Picasso.with(mContext).load(item.getImage()).resize(200,200).into(picture);

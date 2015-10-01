@@ -9,8 +9,7 @@ import android.widget.TextView;
 
 import com.etsy.android.grid.util.DynamicHeightImageView;
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.model.AlbumItem;
-import com.girlswearingleather.app.model.CategoryItem;
+import com.girlswearingleather.app.model.Album;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -18,13 +17,13 @@ import java.util.ArrayList;
 /**
  * Created by Dani on 26/09/2015.
  */
-public class AlbumStaggeredAdapter extends ArrayAdapter<AlbumItem> {
+public class AlbumStaggeredAdapter extends ArrayAdapter<Album> {
 
     private static final String TAG = "AlbumStaggeredAdapter";
 
     private final LayoutInflater mLayoutInflater;
 
-    public AlbumStaggeredAdapter(Context context, int textViewResourceId, ArrayList<AlbumItem> objects) {
+    public AlbumStaggeredAdapter(Context context, int textViewResourceId, ArrayList<Album> objects) {
         super(context, textViewResourceId, objects);
         this.mLayoutInflater = LayoutInflater.from(context);
     }

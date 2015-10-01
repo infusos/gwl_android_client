@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.etsy.android.grid.util.DynamicHeightImageView;
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.model.CategoryItem;
+import com.girlswearingleather.app.model.Category;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -17,13 +17,13 @@ import java.util.ArrayList;
 /**
  * Created by Dani on 26/09/2015.
  */
-public class CategoryStaggeredAdapter  extends ArrayAdapter<CategoryItem> {
+public class CategoryStaggeredAdapter  extends ArrayAdapter<Category> {
 
     private static final String TAG = "CategoryStaggeredAdapter";
 
     private final LayoutInflater mLayoutInflater;
 
-    public CategoryStaggeredAdapter(Context context, int textViewResourceId, ArrayList<CategoryItem> objects) {
+    public CategoryStaggeredAdapter(Context context, int textViewResourceId, ArrayList<Category> objects) {
         super(context, textViewResourceId, objects);
         this.mLayoutInflater = LayoutInflater.from(context);
     }

@@ -3,7 +3,7 @@ package com.girlswearingleather.app.model;
 /**
  * Created by Dani on 19/09/2015.
  */
-public class AlbumItem {
+public class Album{
 
     private int id;
     private int pictures;
@@ -11,7 +11,11 @@ public class AlbumItem {
     private String name;
     private String description;
 
-    public AlbumItem(int id, int pictures, String thumbnail, String name, String description){
+    public Album(){
+
+    }
+
+    public Album(int id, int pictures, String thumbnail, String name, String description){
         this.id = id;
         this.pictures = pictures;
         this.thumbnail = thumbnail;

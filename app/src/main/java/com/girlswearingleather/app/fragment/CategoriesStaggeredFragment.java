@@ -9,15 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.Toast;
 
 import com.etsy.android.grid.StaggeredGridView;
 import com.girlswearingleather.app.R;
 import com.girlswearingleather.app.activity.AlbumStaggeredActivity;
-import com.girlswearingleather.app.activity.CategoryListActivity_;
 import com.girlswearingleather.app.adapter.CategoryStaggeredAdapter;
-import com.girlswearingleather.app.model.CategoryItem;
-import com.orhanobut.logger.Logger;
+import com.girlswearingleather.app.model.Category;
 
 import java.util.ArrayList;
 
@@ -33,7 +30,7 @@ public class CategoriesStaggeredFragment extends Fragment implements /*AbsListVi
     private boolean mHasRequestedMore;
     private CategoryStaggeredAdapter mAdapter;
 
-    private ArrayList<CategoryItem> mData;
+    private ArrayList<Category> mData;
 
     public static CategoriesStaggeredFragment newInstance(){
         CategoriesStaggeredFragment fragment = new CategoriesStaggeredFragment();
@@ -54,7 +51,7 @@ public class CategoriesStaggeredFragment extends Fragment implements /*AbsListVi
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_categories_staggered_layout, container, false);
 
         mGridView = (StaggeredGridView)rootView.findViewById(R.id.gridView);
-        mAdapter = new CategoryStaggeredAdapter(getActivity().getApplicationContext(),android.R.layout.simple_list_item_1, new ArrayList<CategoryItem>());
+        mAdapter = new CategoryStaggeredAdapter(getActivity().getApplicationContext(),android.R.layout.simple_list_item_1, new ArrayList<Category>());
         // do we have saved data?
 
         //if (savedInstanceState != null) {
@@ -65,7 +62,7 @@ public class CategoriesStaggeredFragment extends Fragment implements /*AbsListVi
             mData = generateData();
         }
 
-        for (CategoryItem data : mData) {
+        for (Category data : mData) {
             mAdapter.add(data);
         }
 
@@ -99,8 +96,8 @@ public class CategoriesStaggeredFragment extends Fragment implements /*AbsListVi
     }
 
     private void onLoadMoreItems() {
-        final ArrayList<CategoryItem> sampleData = generateData();
-        for (CategoryItem data : sampleData) {
+        final ArrayList<Category> sampleData = generateData();
+        for (Category data : sampleData) {
             mAdapter.add(data);
         }
         // stash all the data in our backing store
@@ -110,26 +107,26 @@ public class CategoriesStaggeredFragment extends Fragment implements /*AbsListVi
         mHasRequestedMore = false;
     }
 
-    private ArrayList<CategoryItem> generateData() {
-        ArrayList<CategoryItem> listData = new ArrayList<CategoryItem>();
-        listData.add(new CategoryItem("Boots",R.drawable.thumb_leather_boots));
-        listData.add(new CategoryItem("Catsuit",R.drawable.thumb_leather_catsuit));
-        listData.add(new CategoryItem("Coat",R.drawable.thumb_leather_coat));
-        listData.add(new CategoryItem("Cropped Pants",R.drawable.thumb_leather_cropped_pants));
-        listData.add(new CategoryItem("Dress",R.drawable.thumb_leather_dress));
-        listData.add(new CategoryItem("Jacket",R.drawable.thumb_leather_jacket));
-        listData.add(new CategoryItem("Leggings",R.drawable.thumb_leather_leggings));
-        listData.add(new CategoryItem("Mini Dress",R.drawable.thumb_leather_mini_dress));
-        listData.add(new CategoryItem("Mini Skirt",R.drawable.thumb_leather_mini_skirt));
-        listData.add(new CategoryItem("Pants",R.drawable.thumb_leather_pants));
-        listData.add(new CategoryItem("Pencil Dress",R.drawable.thumb_leather_pencil_dress));
-        listData.add(new CategoryItem("Pencil Skirt",R.drawable.thumb_leather_pencil_skirt));
-        listData.add(new CategoryItem("Pleated Skirt",R.drawable.thumb_leather_pleated_skirt));
-        listData.add(new CategoryItem("Quilted Skirt",R.drawable.thumb_leather_quilted_skirt));
-        listData.add(new CategoryItem("Shorts",R.drawable.thumb_leather_shorts));
-        listData.add(new CategoryItem("Skinny Pants",R.drawable.thumb_leather_skinny_pants));
-        listData.add(new CategoryItem("Skirt",R.drawable.thumb_leather_skirt));
-        listData.add(new CategoryItem("Top",R.drawable.thumb_leather_top));
+    private ArrayList<Category> generateData() {
+        ArrayList<Category> listData = new ArrayList<Category>();
+        listData.add(new Category("Boots",R.drawable.thumb_leather_boots));
+        listData.add(new Category("Catsuit",R.drawable.thumb_leather_catsuit));
+        listData.add(new Category("Coat",R.drawable.thumb_leather_coat));
+        listData.add(new Category("Cropped Pants",R.drawable.thumb_leather_cropped_pants));
+        listData.add(new Category("Dress",R.drawable.thumb_leather_dress));
+        listData.add(new Category("Jacket",R.drawable.thumb_leather_jacket));
+        listData.add(new Category("Leggings",R.drawable.thumb_leather_leggings));
+        listData.add(new Category("Mini Dress",R.drawable.thumb_leather_mini_dress));
+        listData.add(new Category("Mini Skirt",R.drawable.thumb_leather_mini_skirt));
+        listData.add(new Category("Pants",R.drawable.thumb_leather_pants));
+        listData.add(new Category("Pencil Dress",R.drawable.thumb_leather_pencil_dress));
+        listData.add(new Category("Pencil Skirt",R.drawable.thumb_leather_pencil_skirt));
+        listData.add(new Category("Pleated Skirt",R.drawable.thumb_leather_pleated_skirt));
+        listData.add(new Category("Quilted Skirt",R.drawable.thumb_leather_quilted_skirt));
+        listData.add(new Category("Shorts",R.drawable.thumb_leather_shorts));
+        listData.add(new Category("Skinny Pants",R.drawable.thumb_leather_skinny_pants));
+        listData.add(new Category("Skirt",R.drawable.thumb_leather_skirt));
+        listData.add(new Category("Top",R.drawable.thumb_leather_top));
         return listData;
     }
 

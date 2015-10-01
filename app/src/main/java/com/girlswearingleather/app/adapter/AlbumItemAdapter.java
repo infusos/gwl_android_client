@@ -9,11 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.model.AlbumItem;
-import com.girlswearingleather.app.model.CardItem;
+import com.girlswearingleather.app.model.Album;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
 import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
-import com.orhanobut.logger.Logger;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -26,10 +24,10 @@ import butterknife.ButterKnife;
  */
 public class AlbumItemAdapter extends UltimateViewAdapter<AlbumItemAdapter.AlbumItemViewHolder> {
 
-    private List<AlbumItem> itemList;
+    private List<Album> itemList;
     private Context mContext;
 
-    public AlbumItemAdapter(List<AlbumItem> itemList, Context context){
+    public AlbumItemAdapter(List<Album> itemList, Context context){
         this.itemList = itemList;
         this.mContext = context;
     }
@@ -72,7 +70,7 @@ public class AlbumItemAdapter extends UltimateViewAdapter<AlbumItemAdapter.Album
 
     @Override
     public void onBindViewHolder(AlbumItemViewHolder albumItemViewHolder, int i) {
-        AlbumItem ci = itemList.get(i);
+        Album ci = itemList.get(i);
         albumItemViewHolder.id = ci.getId();
         albumItemViewHolder.name.setText(ci.getName());
         albumItemViewHolder.description.setText(ci.getDescription());

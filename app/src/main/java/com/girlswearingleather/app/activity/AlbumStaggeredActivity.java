@@ -3,71 +3,61 @@ package com.girlswearingleather.app.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 
 import com.etsy.android.grid.StaggeredGridView;
+import com.girlswearingleather.app.BaseApplication;
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.adapter.AlbumItemAdapter;
 import com.girlswearingleather.app.adapter.AlbumStaggeredAdapter;
-import com.girlswearingleather.app.model.AlbumItem;
-import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
+import com.girlswearingleather.app.manager.WebserviceManager;
+import com.girlswearingleather.app.model.Album;
+import com.girlswearingleather.app.model.Category;
+import com.girlswearingleather.app.model.Image;
+import com.girlswearingleather.app.task.ListAlbumsAsyncTask;
 import com.orhanobut.logger.Logger;
-
-import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.EActivity;
-import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by Dani on 19/09/2015.
  */
-public class AlbumStaggeredActivity extends AppCompatActivity implements /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener {
+public class AlbumStaggeredActivity extends AppCompatActivity implements WebserviceManager.OnAlbumsUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener{
 
-    private static final String TAG = "AlbumGridActivity";
-    public static final String SAVED_DATA_KEY = "SAVED_DATA";
+    private String mCategoryName;
+    private int mCategoryId;
 
     private StaggeredGridView mGridView;
-    private boolean mHasRequestedMore;
     private AlbumStaggeredAdapter mAdapter;
-
-    private ArrayList<AlbumItem> mData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album_staggered_layout);
 
-        //setTitle("TechnoTalkative - SGV Demo");
+        mCategoryId = (getIntent().getExtras().getInt("categoryId", 0) == 0) ? 1 : getIntent().getExtras().getInt("categoryId");
+        mCategoryName = (getIntent().getExtras().getString("categoryName", null) == null) ? "N/A" : getIntent().getExtras().getString("categoryName");
+
+        setTitle(mCategoryName);
+
         mGridView = (StaggeredGridView) findViewById(R.id.gridView);
-        mAdapter = new AlbumStaggeredAdapter(this,android.R.layout.simple_list_item_1, new ArrayList<AlbumItem>());
-        // do we have saved data?
-        //if (savedInstanceState != null) {
-        //    mData = savedInstanceState.getStringArrayList(SAVED_DATA_KEY);
-        //}
-
-        if (mData == null) {
-            mData = generateData();
-        }
-
-        for (AlbumItem data : mData) {
-            mAdapter.add(data);
-        }
+        mAdapter = new AlbumStaggeredAdapter(this,android.R.layout.simple_list_item_1, new ArrayList<Album>());
 
         mGridView.setAdapter(mAdapter);
         //mGridView.setOnScrollListener(this);
         mGridView.setOnItemClickListener(this);
+
+        ListAlbumsAsyncTask loadData = new ListAlbumsAsyncTask(this);
+        loadData.execute(new Category(mCategoryName, mCategoryId));
     }
 
     @Override
     protected void onSaveInstanceState(final Bundle outState) {
         super.onSaveInstanceState(outState);
-        //outState.putStringArrayList(SAVED_DATA_KEY, mData);
     }
 
     /*
@@ -92,31 +82,6 @@ public class AlbumStaggeredActivity extends AppCompatActivity implements /*AbsLi
         }
     }
     */
-    private void onLoadMoreItems() {
-        final ArrayList<AlbumItem> sampleData = generateData();
-        for (AlbumItem data : sampleData) {
-            mAdapter.add(data);
-        }
-        // stash all the data in our backing store
-        mData.addAll(sampleData);
-        // notify the adapter that we can update now
-        mAdapter.notifyDataSetChanged();
-        mHasRequestedMore = false;
-    }
-
-    private ArrayList<AlbumItem> generateData() {
-        ArrayList<AlbumItem> listData = new ArrayList<AlbumItem>();
-        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        listData.add(new AlbumItem(0,10,"http://www.leathercelebrities.com/images/resized/chloe-moretz-attends-the-coach-womens-spring-2016-fashion-show-150x225.jpg","This is a name","This is a description"));
-        return listData;
-    }
-
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -125,5 +90,9 @@ public class AlbumStaggeredActivity extends AppCompatActivity implements /*AbsLi
         startActivity(i);
     }
 
-
+    @Override
+    public void onAlbumsUpdated(List<Album> albums) {
+        mAdapter.addAll(albums);
+        mAdapter.notifyDataSetChanged();
+    }
 }

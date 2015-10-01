@@ -1,4 +1,4 @@
-package com.girlswearingleather.app;
+package com.girlswearingleather.app.activity;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
@@ -13,15 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
-import com.girlswearingleather.app.adapter.CategoryStaggeredAdapter;
+import com.girlswearingleather.app.R;
 import com.girlswearingleather.app.fragment.CardListFragment;
-import com.girlswearingleather.app.fragment.CategoriesFragment;
 import com.girlswearingleather.app.fragment.CategoriesStaggeredFragment;
 import com.girlswearingleather.app.fragment.ConfigurationFragment;
 import com.girlswearingleather.app.fragment.DashboardFragment;
 import com.girlswearingleather.app.fragment.FavouritesFragment;
 import com.girlswearingleather.app.fragment.NavigationDrawerFragment;
-import com.girlswearingleather.app.fragment.SearchFragment;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
