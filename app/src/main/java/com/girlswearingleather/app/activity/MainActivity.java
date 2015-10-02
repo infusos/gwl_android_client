@@ -14,8 +14,7 @@ import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.fragment.CardListFragment;
-import com.girlswearingleather.app.fragment.CategoriesStaggeredFragment;
+import com.girlswearingleather.app.fragment.CategoriesFragment;
 import com.girlswearingleather.app.fragment.ConfigurationFragment;
 import com.girlswearingleather.app.fragment.DashboardFragment;
 import com.girlswearingleather.app.fragment.FavouritesFragment;
@@ -59,16 +58,10 @@ public class MainActivity extends AppCompatActivity implements NavigationDrawerF
                 fragmentManager.beginTransaction().replace(R.id.container, DashboardFragment.newInstance()).commit();
                 break;
             case 1:
-                /*
                 fragmentManager.beginTransaction().replace(R.id.container, CategoriesFragment.newInstance()).commit();
-                */
-                fragmentManager.beginTransaction().replace(R.id.container, CategoriesStaggeredFragment.newInstance()).commit();
                 break;
             case 2:
                 fragmentManager.beginTransaction().replace(R.id.container, FavouritesFragment.newInstance()).commit();
-                break;
-            case 3:
-                fragmentManager.beginTransaction().replace(R.id.container, CardListFragment.newInstance(CardListFragment.CardListType.FilteredList)).commit();
                 break;
             case 4:
                 fragmentManager.beginTransaction().replace(R.id.container, ConfigurationFragment.newInstance()).commit();

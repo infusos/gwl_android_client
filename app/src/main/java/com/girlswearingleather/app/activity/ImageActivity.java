@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 
 import com.etsy.android.grid.StaggeredGridView;
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.adapter.ImageStaggeredAdapter;
+import com.girlswearingleather.app.adapter.ImageAdapter;
 import com.girlswearingleather.app.manager.WebserviceManager;
 import com.girlswearingleather.app.model.Album;
 import com.girlswearingleather.app.model.Image;
@@ -21,10 +21,10 @@ import java.util.List;
 /**
  * Created by Dani on 19/09/2015.
  */
-public class ImageStaggeredActivity extends AppCompatActivity implements WebserviceManager.OnImagesUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener {
+public class ImageActivity extends AppCompatActivity implements WebserviceManager.OnImagesUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener {
 
     private StaggeredGridView mGridView;
-    private ImageStaggeredAdapter mAdapter;
+    private ImageAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class ImageStaggeredActivity extends AppCompatActivity implements Webserv
         setContentView(R.layout.activity_image_staggered_layout);
 
         mGridView = (StaggeredGridView) findViewById(R.id.gridView);
-        mAdapter = new ImageStaggeredAdapter(this,android.R.layout.simple_list_item_1, new ArrayList<Image>());
+        mAdapter = new ImageAdapter(this,android.R.layout.simple_list_item_1, new ArrayList<Image>());
 
 
         mGridView.setAdapter(mAdapter);

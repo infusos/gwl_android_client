@@ -5,11 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.etsy.android.grid.util.DynamicHeightImageView;
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.model.Category;
+import com.girlswearingleather.app.model.Image;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.ArrayList;
@@ -17,13 +16,13 @@ import java.util.ArrayList;
 /**
  * Created by Dani on 26/09/2015.
  */
-public class CategoryStaggeredAdapter  extends ArrayAdapter<Category> {
+public class ImageAdapter extends ArrayAdapter<Image> {
 
-    private static final String TAG = "CategoryStaggeredAdapter";
+    private static final String TAG = "ImageAdapter";
 
     private final LayoutInflater mLayoutInflater;
 
-    public CategoryStaggeredAdapter(Context context, int textViewResourceId, ArrayList<Category> objects) {
+    public ImageAdapter(Context context, int textViewResourceId, ArrayList<Image> objects) {
         super(context, textViewResourceId, objects);
         this.mLayoutInflater = LayoutInflater.from(context);
     }
@@ -32,23 +31,20 @@ public class CategoryStaggeredAdapter  extends ArrayAdapter<Category> {
     public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder vh;
         if (convertView == null) {
-            convertView = mLayoutInflater.inflate(R.layout.category_item_layout,parent, false);
+            convertView = mLayoutInflater.inflate(R.layout.image_item_layout,parent, false);
             vh = new ViewHolder();
-            vh.picture = (DynamicHeightImageView) convertView.findViewById(R.id.picture);
-            vh.text = (TextView)convertView.findViewById(R.id.name);
+            vh.small = (DynamicHeightImageView) convertView.findViewById(R.id.small);
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
         }
 
-        ImageLoader.getInstance().displayImage("drawable://"+getItem(position).getImage(), vh.picture);
-        vh.text.setText(getItem(position).getName());
+        ImageLoader.getInstance().displayImage(getItem(position).getSmall(), vh.small);
         return convertView;
     }
 
     static class ViewHolder {
-        DynamicHeightImageView picture;
-        TextView text;
+        DynamicHeightImageView small;
     }
 
 

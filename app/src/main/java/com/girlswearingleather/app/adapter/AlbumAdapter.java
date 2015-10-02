@@ -17,13 +17,13 @@ import java.util.ArrayList;
 /**
  * Created by Dani on 26/09/2015.
  */
-public class AlbumStaggeredAdapter extends ArrayAdapter<Album> {
+public class AlbumAdapter extends ArrayAdapter<Album> {
 
-    private static final String TAG = "AlbumStaggeredAdapter";
+    private static final String TAG = "AlbumAdapter";
 
     private final LayoutInflater mLayoutInflater;
 
-    public AlbumStaggeredAdapter(Context context, int textViewResourceId, ArrayList<Album> objects) {
+    public AlbumAdapter(Context context, int textViewResourceId, ArrayList<Album> objects) {
         super(context, textViewResourceId, objects);
         this.mLayoutInflater = LayoutInflater.from(context);
     }

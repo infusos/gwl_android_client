@@ -8,31 +8,26 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 
 import com.etsy.android.grid.StaggeredGridView;
-import com.girlswearingleather.app.BaseApplication;
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.adapter.AlbumStaggeredAdapter;
+import com.girlswearingleather.app.adapter.AlbumAdapter;
 import com.girlswearingleather.app.manager.WebserviceManager;
 import com.girlswearingleather.app.model.Album;
 import com.girlswearingleather.app.model.Category;
-import com.girlswearingleather.app.model.Image;
 import com.girlswearingleather.app.task.ListAlbumsAsyncTask;
-import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Created by Dani on 19/09/2015.
  */
-public class AlbumStaggeredActivity extends AppCompatActivity implements WebserviceManager.OnAlbumsUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener{
+public class AlbumActivity extends AppCompatActivity implements WebserviceManager.OnAlbumsUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener{
 
     private String mCategoryName;
     private int mCategoryId;
 
     private StaggeredGridView mGridView;
-    private AlbumStaggeredAdapter mAdapter;
+    private AlbumAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +40,7 @@ public class AlbumStaggeredActivity extends AppCompatActivity implements Webserv
         setTitle(mCategoryName);
 
         mGridView = (StaggeredGridView) findViewById(R.id.gridView);
-        mAdapter = new AlbumStaggeredAdapter(this,android.R.layout.simple_list_item_1, new ArrayList<Album>());
+        mAdapter = new AlbumAdapter(this,android.R.layout.simple_list_item_1, new ArrayList<Album>());
 
         mGridView.setAdapter(mAdapter);
         //mGridView.setOnScrollListener(this);
@@ -85,7 +80,7 @@ public class AlbumStaggeredActivity extends AppCompatActivity implements Webserv
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-        Intent i = new Intent(this, ImageStaggeredActivity.class);
+        Intent i = new Intent(this, ImageActivity.class);
         i.putExtra("category",position);
         startActivity(i);
     }

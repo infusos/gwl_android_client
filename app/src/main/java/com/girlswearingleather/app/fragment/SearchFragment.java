@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.model.DashboardItem;
 
 
 /**

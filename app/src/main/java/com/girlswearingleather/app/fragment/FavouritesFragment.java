@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.girlswearingleather.app.R;
-import com.girlswearingleather.app.adapter.CategoryAdapter;
 
 
 /**
