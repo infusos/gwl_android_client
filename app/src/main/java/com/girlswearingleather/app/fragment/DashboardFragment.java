@@ -14,8 +14,6 @@ import com.girlswearingleather.app.R;
  */
 public class DashboardFragment extends Fragment {
 
-    private DashboardItem mDashboardItem;
-
     public static DashboardFragment newInstance(){
         DashboardFragment fragment = new DashboardFragment();
         return fragment;
@@ -38,7 +36,4 @@ public class DashboardFragment extends Fragment {
         return rootView;
     }
 
-    private void populate(){
-        mDashboardItem = new DashboardItem();
-    }
 }

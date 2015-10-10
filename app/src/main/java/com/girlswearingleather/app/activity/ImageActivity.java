@@ -1,5 +1,7 @@
 package com.girlswearingleather.app.activity;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,10 +23,11 @@ import java.util.List;
 /**
  * Created by Dani on 19/09/2015.
  */
-public class ImageActivity extends AppCompatActivity implements WebserviceManager.OnImagesUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener {
+public class ImageActivity extends AppCompatActivity implements DialogInterface.OnCancelListener, WebserviceManager.OnImagesUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener {
 
     private StaggeredGridView mGridView;
     private ImageAdapter mAdapter;
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,9 @@ public class ImageActivity extends AppCompatActivity implements WebserviceManage
         mGridView.setAdapter(mAdapter);
         //mGridView.setOnScrollListener(this);
         mGridView.setOnItemClickListener(this);
+
+        mProgressDialog = ProgressDialog.show(this,"Title","Loading...",false,true,this);
+        mProgressDialog.show();
 
         ListImagesAsyncTask loadData = new ListImagesAsyncTask(this);
         loadData.execute(new Album());
@@ -95,6 +101,7 @@ public class ImageActivity extends AppCompatActivity implements WebserviceManage
     public void onImagesUpdated(List<Image> images) {
         mAdapter.addAll(images);
         mAdapter.notifyDataSetChanged();
+        mProgressDialog.dismiss();
     }
 
     @Override
@@ -103,5 +110,9 @@ public class ImageActivity extends AppCompatActivity implements WebserviceManage
         this.finish();
     }
 
-
+    @Override
+    public void onCancel(DialogInterface dialogInterface) {
+        mProgressDialog.dismiss();
+        super.onBackPressed();
+    }
 }

@@ -14,7 +14,7 @@ import com.girlswearingleather.app.R;
  */
 public class ConfigurationFragment extends Fragment {
 
-    private ConfigurationItem mConfigurationItem;
+    //private ConfigurationItem mConfigurationItem;
 
     public static ConfigurationFragment newInstance(){
         ConfigurationFragment fragment = new ConfigurationFragment();
@@ -36,7 +36,4 @@ public class ConfigurationFragment extends Fragment {
         return rootView;
     }
 
-    private void populate(){
-        mConfigurationItem = new ConfigurationItem();
-    }
 }

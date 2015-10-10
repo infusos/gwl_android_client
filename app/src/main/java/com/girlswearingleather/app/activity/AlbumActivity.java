@@ -1,5 +1,7 @@
 package com.girlswearingleather.app.activity;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -21,13 +23,15 @@ import java.util.List;
 /**
  * Created by Dani on 19/09/2015.
  */
-public class AlbumActivity extends AppCompatActivity implements WebserviceManager.OnAlbumsUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener{
+public class AlbumActivity extends AppCompatActivity implements DialogInterface.OnCancelListener, WebserviceManager.OnAlbumsUpdated, /*AbsListView.OnScrollListener, */AbsListView.OnItemClickListener{
 
     private String mCategoryName;
     private int mCategoryId;
 
     private StaggeredGridView mGridView;
     private AlbumAdapter mAdapter;
+
+    private ProgressDialog mProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,9 @@ public class AlbumActivity extends AppCompatActivity implements WebserviceManage
         mGridView.setAdapter(mAdapter);
         //mGridView.setOnScrollListener(this);
         mGridView.setOnItemClickListener(this);
+
+        mProgressDialog = ProgressDialog.show(this,"Title","Loading...",false,true,this);
+        mProgressDialog.show();
 
         ListAlbumsAsyncTask loadData = new ListAlbumsAsyncTask(this);
         loadData.execute(new Category(mCategoryName, mCategoryId));
@@ -89,5 +96,12 @@ public class AlbumActivity extends AppCompatActivity implements WebserviceManage
     public void onAlbumsUpdated(List<Album> albums) {
         mAdapter.addAll(albums);
         mAdapter.notifyDataSetChanged();
+        mProgressDialog.dismiss();
+    }
+
+    @Override
+    public void onCancel(DialogInterface dialogInterface) {
+        mProgressDialog.dismiss();
+        super.onBackPressed();
     }
 }
