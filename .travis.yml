@@ -4,7 +4,7 @@ before_install:
  - chmod +x gradlew
 android:
   components:
-    # Uncomment the lines below if you want to
+    # Uncomment the lines below if you want to 
     # use the latest revision of Android SDK Tools
     - platform-tools
     - tools
@@ -16,12 +16,12 @@ android:
     # - android-19
 
     # Additional components
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
+    # - extra-google-google_play_services
+    # - extra-google-m2repository
+    # - extra-android-m2repository
     # - addon-google_apis-google-19
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-19
+    # - sys-img-armeabi-v7a-android-19
     # - sys-img-x86-android-17
